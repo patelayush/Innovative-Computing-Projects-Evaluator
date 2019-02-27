@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "2408e223-8add-4bcc-bd06-cb063945ce78",
+		"name": "A_MAD/FinalProject/",
+		"description": "Contains the lost and documentation of all the APIs for the final project of Advanced MAD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name ",
+							"value": "wewewewew",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "admin@admin.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "archit",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "khuillar",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "sunidhi",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "EVALUATOR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/create_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create_user"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This request is a POST request and can create all types of users including admin (ADMIN | EXHIBIT | EVALUATOR)\n\nThings to send in the body\nname: String\nemail: String\nusername: String\npassword: String\nrole: enum: ['ADMIN', 'EXHIBIT','EVALUATOR'] - default - admin"
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFyY2hpdCIsInBhc3N3b3JkIjoia2h1aWxsYXIiLCJpYXQiOjE1NDQ2MzUwODd9.zPaH1sl93jp1U8eTj06mDFdA5HeTAhmAOTG7Ia_tOkg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "EVALUATOR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/user_login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_login"
+					]
+				},
+				"description": "this API logs in to with the given \nusername\npassword\nrole\nand retuns the jwt token if successfully loggged in\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Add a question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "question",
+							"value": "what is the time right now in usa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/create_question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create_question"
+					]
+				},
+				"description": "This request takes in a question and adds the question in the Survey Database"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "old",
+							"value": "question 1",
+							"type": "text"
+						},
+						{
+							"key": "new",
+							"value": "what is the time",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/update_question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"update_question"
+					]
+				},
+				"description": "This request takes in 2 things:\nold:\nnew:\n\nold -  the question to be updates\nnew - the question you want to update to\n"
+			},
+			"response": []
+		},
+		{
+			"name": "get all questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/get_all_questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_all_questions"
+					]
+				},
+				"description": "get request to get all the questions from the database"
+			},
+			"response": []
+		},
+		{
+			"name": "delete a question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "question",
+							"value": "what is the time",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/delete_question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delete_question"
+					]
+				},
+				"description": "this post request deletes a question. takes in that question as a argument\n"
+			},
+			"response": []
+		},
+		{
+			"name": "get all evaluators",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/get_evaluators",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_evaluators"
+					]
+				},
+				"description": "Get request - returns all the evaluators"
+			},
+			"response": []
+		},
+		{
+			"name": "get all the teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/get_teams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_teams"
+					]
+				},
+				"description": "GET request to get all the teams"
+			},
+			"response": []
+		},
+		{
+			"name": "update a user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "old",
+							"value": "team 4",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "EXHIBIT",
+							"type": "text"
+						},
+						{
+							"key": "new",
+							"value": "team 3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/update_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"update_user"
+					]
+				},
+				"description": "POST request that takes in:\nold: username to be chnages\nrole: role of the user\nnew: new username of the user\n\nwhile updating it checks for the uniqueness of the new username that you want to update it to"
+			},
+			"response": []
+		},
+		{
+			"name": "delete a user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "eval 1212121",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "EVALUATOR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/delete_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delete_user"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "POST request that taken in\nusername: username of the user to be deleted\nrole: role of the user\n"
+			},
+			"response": []
+		},
+		{
+			"name": "save score",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "scores[0]",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "evaluator",
+							"value": "eval2 updated",
+							"type": "text"
+						},
+						{
+							"key": "exhibit",
+							"value": "team5",
+							"type": "text"
+						},
+						{
+							"key": "scores[1]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "scores[2]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "scores[3]",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/add_score",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"add_score"
+					]
+				},
+				"description": "this is POST request and saves the scores on the given questions along with:\nexhibit - username of the exhibit\nevaluator - username of the evaluator\nscores - array"
+			},
+			"response": []
+		},
+		{
+			"name": "get all the scores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/get_all_scores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_all_scores"
+					]
+				},
+				"description": "GET request sends all the data of the Scores database"
+			},
+			"response": []
+		},
+		{
+			"name": "get responses evaluated by a evaluator",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "evaluator",
+							"value": "eval100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/get_evaluator_response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_evaluator_response"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all the responses submitted for an team",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "exhibit",
+							"value": "team100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/get_exhibit_response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_exhibit_response"
+					]
+				},
+				"description": "POST request that takes in:\nexhitbit: username of the exhibit\n"
+			},
+			"response": []
+		}
+	]
+}

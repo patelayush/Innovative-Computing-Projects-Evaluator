@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Survey</title>
+    <% include ./partials/scripts.ejs %>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          method: "GET",
+          dataType: "json",
+          url: "/get_all_questions",
+          success:
+            function(data) {
+              var table = $('#example').DataTable( {
+                "scrollY" :        "300px",
+                "scrollX" :        "true",
+                "scrollCollapse" : "true",
+                "paging" :         "false",
+                "bAutoWidth" : false,
+                "aaData" : data,
+                dom: 'Bfrtip',
+                  "columnDefs": [ {
+                      "targets": null,
+                      "className": "dt-center",
+                      "data": data,
+                      "defaultContent": "-"
+                  } ],
+                  "columns" : [  {
+                         data : "question",
+                         "defaultContent": "-"
+                       }
+                       ]
+              } );
+              table.$('tr').click(function () {
+                var data = table.rows(this).data();
+                myFunction(data[0].question);
+              });
+          },
+        error:
+          function(data) {
+              alert("Getting all data failed. Please try again");
+            }
+    } );
+
+    var dataGlobal = null;
+
+    function myFunction(data){
+      document.getElementById("question1").innerHTML = data;
+      dataGlobal = data;
+      document.getElementById('question3').value = dataGlobal;
+      document.getElementById('old').value = dataGlobal;
+      $('#myModal').modal('show');
+    }
+
+    $("#updateQuestion").on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: $(this).prop('method'),
+        url : $(this).prop('action'),
+        data: $(this).serialize(),
+        success:
+            function(result) {
+                if(result.status==200){
+                    window.location.href = '/create-survey';
+                }
+                else{
+                }
+            },
+           error:
+            function(result) {
+                alert("Something went wrong. Try again!");
+                window.location.href = '/create-survey';
+               }
+        })
+      });
+
+    $("#deleteQuestion").on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: $(this).prop('method'),
+        url : $(this).prop('action'),
+        data: $(this).serialize(),
+        success:
+            function(result) {
+                if(result.status==200){
+                    window.location.href = '/create-survey';
+                }
+                else{
+                }
+            },
+           error:
+            function(result) {
+                alert("Something went wrong. Try again!");
+                window.location.href = '/create-survey';
+               }
+        })
+      });
+
+      $("#createQuestionForm").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: $(this).prop('method'),
+          url : $(this).prop('action'),
+          data: $(this).serialize(),
+          success:
+              function(result) {
+                  if(result.status==200){
+                      window.location.href = '/create-survey';
+                  }
+                  else{
+                  }
+              },
+             error:
+              function(result) {
+                  alert("Something went wrong. Try again!");
+                  window.location.href = '/create-survey';
+                 }
+             })
+          });
+        });
+      </script>
+    </head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <div class="container">
+        <h2>Survey Form: </h2>
+        <div class="row">
+          <div class="col-sm-6">
+              <form id="createQuestionForm" method="post" action="/create_question">
+                <div class="form-group marginTop7">
+                  <p>Adding new question will result in deletion of the current surevy responses.</p>
+                    <label for="question">Question:</label>
+                  <textarea class="form-control" rows="5" id="question" name="question"></textarea>
+                  <button type="submit" class="btn btn-default btn-success marginTop20px pull-right">Add Question</button>
+                </div>
+            </form>
+        </div>
+          <div class="col-sm-6">
+            <table id="example" class="display"  style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Previous Questions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+      </div>
+
+      <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Question</h4>
+            <p>Deleting a question will result in deletion of the survey responses</p>
+          </div>
+          <div class="modal-body">
+            <p id="question1"></p>
+            <form id="deleteQuestion" class="marginTop30" action="/delete_question" method="post">
+              <input id="question3" name="question" hidden>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-default btn1">Delete</button>
+              </div>
+            </form>
+            <form id="updateQuestion" class="marginTop30" action="/update_question" method="post">
+              <input id="old" name="old" hidden>
+              <label>New Question</label>
+              <textarea class="form-control" rows="2" id="new" name="new"></textarea>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-default btn1">Update</button>
+                <button type="button" class="btn btn-success btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

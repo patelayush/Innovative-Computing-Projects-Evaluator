@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome</title>
+    <% include ./partials/scripts.ejs %>
+    <script type="text/javascript">
+      $(window).on('load',function(){
+        $('#myModal').modal('show');
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("#adminLoginForm").on('submit', function(e) {
+          e.preventDefault();
+          $.ajax({
+            type: $(this).prop('method'),
+            // headers: {
+            //   "Authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwicGFzc3dvcmQiOiJwYXNzd29yZCIsImlhdCI6MTU0NDY0NzUwM30.JQNsHEX8az1Wp5tqp-w8MivGgNf5JvnrI9RDp_HNFao"
+            // },
+            url : $(this).prop('action'),
+            data: $(this).serialize(),
+            success:
+                function(result) {
+                    if(result.status==200){
+                        window.location.href = '/home';
+                    }
+                    else{
+                    }
+                },
+               error:
+                function(result) {
+                    alert("Authentication failed. Admin not found.");
+                    window.location.href = "/";
+                   }
+            })
+          });
+        });
+  </script>
+  </head>
+  <body>
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Admin Login</h4>
+          </div>
+          <div class="modal-body">
+            <form id="adminLoginForm" class="marginTop30" action="/user_login" method="post">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="username" type="text" class="form-control" name="username" placeholder="Username">
+              </div>
+              <br>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+                <input id="role"name="role" value="ADMIN" hidden>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-default btn1">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

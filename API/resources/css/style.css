@@ -1,0 +1,100 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 100vh}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  height: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+.textJustified{
+  text-align: justify;
+}
+
+.evaluatorPage{
+  margin-top: 10%;
+}
+
+.teamPage{
+  margin-top: 10%;
+}
+
+.qrCode{
+  /* margin-top: 10%; */
+  /* margin-left: 10%; */
+  margin-right: 20%;
+}
+
+.marginTop20px{
+  margin-top: 20px;
+}
+
+.btn{
+  background-color: #222222 !important;
+  border-color: #222222 !important;
+}
+
+.marginRight5{
+  margin-right: 5%;
+}
+
+.marginTop7{
+  margin-top: 7%;
+}
+
+.newFontStyle {
+  color: #222222;
+  font-family: 'Raleway',sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 72px;
+  margin: 0 0 24px;
+  text-align: center;
+  }
+
+  .newFontStyle1 {
+    color: #222222;
+    font-family: 'Raleway',sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 0 0 24px;
+    text-align: center;
+    }
+
+.columnLine{
+  padding-right:20px;
+  border-left: 1px solid #ccc;
+}
+
+.leftPaddingReduced{
+  padding-left: -10px !important;
+  margin-left: 0 !important
+}
