@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         // making toolbar transparent
         transparentToolbar();
-        //hi this ia ayush patel
+        //hi ia ayush patel
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn_scan).setOnClickListener(new View.OnClickListener() {
