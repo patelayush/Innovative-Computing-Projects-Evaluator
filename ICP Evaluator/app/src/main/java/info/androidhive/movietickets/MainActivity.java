@@ -14,14 +14,14 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     APIInterface apiService =
-            APIClient.getClient().create(APIInterface.class);
+            APIClient.getClient().create(APIInterface.class);git
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // making toolbar transparent
         transparentToolbar();
-
+        //hi this ia ayush patel
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn_scan).setOnClickListener(new View.OnClickListener() {
